@@ -6,7 +6,6 @@ namespace AspnetRunAngular.Core.Entities
     {
         public Guid Id { get; set; }
         public DateTime CreateTime { get; set; }
-        public bool IsDeleted { get; set; }
 
         int? _requestedHashCode;
 
