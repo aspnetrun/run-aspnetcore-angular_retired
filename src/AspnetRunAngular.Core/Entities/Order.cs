@@ -10,6 +10,8 @@ namespace AspnetRunAngular.Core.Entities
             OrderItems = new HashSet<OrderItem>();
         }
 
+        public string Code { get; set; }
+
         public DateTime OrderDate { get; set; }
 
         public decimal TotalPrice { get; set; }
