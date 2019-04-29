@@ -1,22 +1,19 @@
-﻿using System;
-
-namespace AspnetRunAngular.Core.Entities
+﻿namespace AspnetRunAngular.Core.Entities.Base
 {
-    public abstract class Entity
+    public abstract class EntityBaseWithTypedId<TId> : IEntityWithTypedId<TId>
     {
-        public Guid Id { get; set; }
-        public DateTime CreateTime { get; set; }
+        public virtual TId Id { get; protected set; }
 
         int? _requestedHashCode;
 
         public bool IsTransient()
         {
-            return Id == default(Guid);
+            return Id.Equals(default(TId));
         }
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Entity))
+            if (obj == null || !(obj is EntityBaseWithTypedId<TId>))
                 return false;
 
             if (ReferenceEquals(this, obj))
@@ -25,12 +22,12 @@ namespace AspnetRunAngular.Core.Entities
             if (GetType() != obj.GetType())
                 return false;
 
-            Entity item = (Entity)obj;
+            var item = (EntityBaseWithTypedId<TId>)obj;
 
             if (item.IsTransient() || IsTransient())
                 return false;
             else
-                return item.Id == Id;
+                return item == this;
         }
 
         public override int GetHashCode()
@@ -44,9 +41,9 @@ namespace AspnetRunAngular.Core.Entities
             }
             else
                 return base.GetHashCode();
-
         }
-        public static bool operator ==(Entity left, Entity right)
+
+        public static bool operator ==(EntityBaseWithTypedId<TId> left, EntityBaseWithTypedId<TId> right)
         {
             if (Equals(left, null))
                 return Equals(right, null) ? true : false;
@@ -54,7 +51,7 @@ namespace AspnetRunAngular.Core.Entities
                 return left.Equals(right);
         }
 
-        public static bool operator !=(Entity left, Entity right)
+        public static bool operator !=(EntityBaseWithTypedId<TId> left, EntityBaseWithTypedId<TId> right)
         {
             return !(left == right);
         }
