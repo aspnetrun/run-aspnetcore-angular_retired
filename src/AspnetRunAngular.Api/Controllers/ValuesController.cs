@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspnetRunAngular.WebApi.Controllers
+namespace AspnetRunAngular.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
