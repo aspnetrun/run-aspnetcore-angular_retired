@@ -1,6 +1,6 @@
 ﻿namespace AspnetRunAngular.Core.Entities.Base
 {
-    public interface IEntityWithTypedId<TId>
+    public interface IEntityBase<TId>
     {
         TId Id { get; }
     }

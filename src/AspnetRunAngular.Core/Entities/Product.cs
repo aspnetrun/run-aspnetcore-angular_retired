@@ -3,7 +3,7 @@ using System;
 
 namespace AspnetRunAngular.Core.Entities
 {
-    public class Product : EntityBase
+    public class Product : Entity
     {
         public string ProductName { get; set; }
         public string QuantityPerUnit { get; set; }

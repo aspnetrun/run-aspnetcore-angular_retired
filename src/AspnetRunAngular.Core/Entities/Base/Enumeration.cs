@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace AspnetRunAngular.Core.Entities.Base
 {
-    public abstract class Enumeration : EntityBaseWithTypedId<int>, IComparable
+    public abstract class Enumeration : EntityBase<int>, IComparable
     {
         public string Code { get; private set; }
         public string Name { get; private set; }
