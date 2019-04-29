@@ -7,8 +7,8 @@ namespace AspnetRunAngular.Core.Entities.Base
 {
     public abstract class Enumeration : EntityBase<int>, IComparable
     {
-        public string Code { get; private set; }
-        public string Name { get; private set; }
+        public string Code { get; protected set; }
+        public string Name { get; protected set; }
 
         protected Enumeration()
         {

@@ -1,5 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AspnetRunAngular.Core.Entities.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AspnetRunAngular.Infrastructure.Data
@@ -16,6 +21,12 @@ namespace AspnetRunAngular.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var typeToRegisters = typeof(Entity).GetTypeInfo().Assembly.DefinedTypes.Select(t => t.AsType());
+
+            modelBuilder.RegisterEntities(typeToRegisters);
+
+            modelBuilder.RegisterConvention();
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -59,6 +70,45 @@ namespace AspnetRunAngular.Infrastructure.Data
                     _currentTransaction.Dispose();
                     _currentTransaction = null;
                 }
+            }
+        }
+    }
+
+    static class AspnetRunContextConfigurations
+    {
+        internal static void RegisterEntities(this ModelBuilder modelBuilder, IEnumerable<Type> typeToRegisters)
+        {
+            var entityTypes = typeToRegisters.Where(t => (t.GetTypeInfo().IsSubclassOf(typeof(Entity)) || t.GetTypeInfo().IsSubclassOf(typeof(Enumeration))) && !t.GetTypeInfo().IsAbstract);
+
+            foreach (var type in entityTypes)
+            {
+                modelBuilder.Entity(type);
+            }
+        }
+
+        internal static void RegisterConvention(this ModelBuilder modelBuilder)
+        {
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                if (entity.ClrType.Namespace != null)
+                {
+                    var tableName = entity.ClrType.Name;
+                    var typeBuilder = modelBuilder.Entity(entity.Name);
+                    typeBuilder.ToTable(tableName);
+
+                    if (entity.ClrType.IsSubclassOf(typeof(Entity)))
+                    {
+                    }
+                    else if (entity.ClrType.IsSubclassOf(typeof(Enumeration)))
+                    {
+                        typeBuilder.Property("Id").ValueGeneratedNever();
+                    }
+                }
+            }
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
         }
     }
