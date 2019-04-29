@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspnetRunAngular.Core.Interfaces
+namespace AspnetRunAngular.Core.Repositories.Base
 {
     public interface IRepositoryBase<T, TId> where T : IEntityBase<TId>
     {
