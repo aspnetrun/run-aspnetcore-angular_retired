@@ -4,16 +4,16 @@ namespace AspnetRunAngular.Core.Exceptions
 {
     public class CoreException : Exception
     {
-        public CoreException()
+        internal CoreException()
         {
         }
 
-        public CoreException(string message)
+        internal CoreException(string message)
             : base(message)
         {
         }
 
-        public CoreException(string message, Exception innerException)
+        internal CoreException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
