@@ -16,8 +16,4 @@
     <ProjectReference Include="..\AspnetRunAngular.Core\AspnetRunAngular.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
 </Project>
