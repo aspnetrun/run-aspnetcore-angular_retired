@@ -5,6 +5,7 @@ using AspnetRunAngular.Infrastructure.Data;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -174,9 +175,8 @@ namespace AspnetRunAngular.Api
 
         public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAutoMapper(typeof(ExpertiseMappingProfile).Assembly);
             services.AddOptions();
-            services.Configure<ExpertiseSettings>(configuration);
+            services.Configure<AspnetRunSettings>(configuration);
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
