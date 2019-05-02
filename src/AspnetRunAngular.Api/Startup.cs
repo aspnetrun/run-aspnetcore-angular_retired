@@ -2,6 +2,8 @@
 using System.Reflection;
 using AspnetRunAngular.Core.Configuration;
 using AspnetRunAngular.Infrastructure.Data;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +37,6 @@ namespace AspnetRunAngular.Api
                 .AddCustomDbContext(AspnetRunSettings)
                 .AddCustomSwagger()
                 .AddCustomConfiguration(Configuration)
-                .AddCustomAuthentication(AspnetRunSettings)
                 .AddCustomIntegrations();
         }
 
@@ -153,26 +154,6 @@ namespace AspnetRunAngular.Api
             return services;
         }
 
-        public static IServiceProvider AddCustomIntegrations(this IServiceCollection services)
-        {
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddHttpContextAccessor();
-
-            //configure autofac
-            var container = new ContainerBuilder();
-            container.Populate(services);
-
-            container.RegisterModule(new MediatorModule());
-            container.RegisterModule(new ApplicationModule());
-
-            var scope = container.Build();
-
-            var componentContext = scope.Resolve<IComponentContext>();
-            DependencyContainer.Init(componentContext);
-
-            return new AutofacServiceProvider(scope);
-        }
-
         public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddOptions();
@@ -199,25 +180,20 @@ namespace AspnetRunAngular.Api
             return services;
         }
 
-        public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, AspnetRunSettings aspnetRunSettings)
+        public static IServiceProvider AddCustomIntegrations(this IServiceCollection services)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-              .AddJwtBearer(options =>
-              {
-                  options.TokenValidationParameters = new TokenValidationParameters
-                  {
-                      ValidateIssuer = true,
-                      ValidateAudience = true,
-                      ValidateLifetime = true,
-                      ValidateIssuerSigningKey = true,
+            services.AddHttpContextAccessor();
 
-                      ValidIssuer = aspnetRunSettings.Tokens.Issuer,
-                      ValidAudience = aspnetRunSettings.Tokens.Audience,
-                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(aspnetRunSettings.Tokens.Key))
-                  };
-              });
+            //configure autofac
+            var container = new ContainerBuilder();
+            container.Populate(services);
 
-            return services;
+            //container.RegisterModule(new MediatorModule());
+            //container.RegisterModule(new ApplicationModule());
+
+            var scope = container.Build();
+
+            return new AutofacServiceProvider(scope);
         }
     }
 
