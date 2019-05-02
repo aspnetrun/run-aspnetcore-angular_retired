@@ -1,5 +1,6 @@
 ﻿using System;
 using AspnetRunAngular.Api.Application.Middlewares;
+using AspnetRunAngular.Api.Infrastructure.AutofacModules;
 using AspnetRunAngular.Core.Configuration;
 using AspnetRunAngular.Infrastructure.Data;
 using Autofac;
@@ -186,8 +187,8 @@ namespace AspnetRunAngular.Api
             var container = new ContainerBuilder();
             container.Populate(services);
 
-            //container.RegisterModule(new MediatorModule());
-            //container.RegisterModule(new ApplicationModule());
+            container.RegisterModule(new MediatorModule());
+            container.RegisterModule(new ApplicationModule());
 
             var scope = container.Build();
 
