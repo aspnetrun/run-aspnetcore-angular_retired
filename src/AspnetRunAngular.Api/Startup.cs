@@ -107,9 +107,9 @@ namespace AspnetRunAngular.Api
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services, AspnetRunSettings aspnetRunSettings)
         {
             // use in-memory database
-            //services.AddDbContext<ExpertiseContext>(c => c.UseInMemoryDatabase("AspnetRun"));
+            //services.AddDbContext<AspnetRunContext>(c => c.UseInMemoryDatabase("AspnetRun"));
 
-            // Add Expertise DbContext
+            // Add AspnetRun DbContext
             services
                 .AddEntityFrameworkSqlServer()
                 .AddDbContext<AspnetRunContext>(options =>

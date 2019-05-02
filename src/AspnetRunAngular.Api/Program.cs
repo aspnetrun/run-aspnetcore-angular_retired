@@ -20,8 +20,8 @@ namespace AspnetRunAngular.Api
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    var expertiseContextSeed = services.GetRequiredService<AspnetRunContextSeed>();
-                    expertiseContextSeed.SeedAsync().Wait();
+                    var aspnetRunContextSeed = services.GetRequiredService<AspnetRunContextSeed>();
+                    aspnetRunContextSeed.SeedAsync().Wait();
                 }
                 catch (Exception ex)
                 {
