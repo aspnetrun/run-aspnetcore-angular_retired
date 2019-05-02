@@ -32,7 +32,6 @@ namespace AspnetRunAngular.Api
             services
                 .AddCustomMvc()
                 .AddCustomDbContext(AspnetRunSettings)
-                .AddCustomIdentity()
                 .AddCustomSwagger()
                 .AddCustomConfiguration(Configuration)
                 .AddCustomAuthentication(AspnetRunSettings)
@@ -126,28 +125,6 @@ namespace AspnetRunAngular.Api
             return services;
         }
 
-        public static IServiceCollection AddCustomIdentity(this IServiceCollection services)
-        {
-            var sp = services.BuildServiceProvider();
-            using (var scope = sp.CreateScope())
-            {
-                var existingUserManager = scope.ServiceProvider.GetService<UserManager<ExpertiseUser>>();
-
-                if (existingUserManager == null)
-                {
-                    services.AddIdentity<ExpertiseUser, ExpertiseRole>(
-                        cfg =>
-                        {
-                            cfg.User.RequireUniqueEmail = true;
-                        })
-                        .AddEntityFrameworkStores<ExpertiseContext>()
-                        .AddDefaultTokenProviders();
-                }
-            }
-
-            return services;
-        }
-
         public static IServiceCollection AddCustomSwagger(this IServiceCollection services)
         {
             services.AddSwaggerDocument(config =>
@@ -155,12 +132,12 @@ namespace AspnetRunAngular.Api
                 config.PostProcess = document =>
                 {
                     document.Info.Version = "v1";
-                    document.Info.Title = "Expertise HTTP API";
-                    document.Info.Description = "The Expertise Service HTTP API";
+                    document.Info.Title = "AspnetRun HTTP API";
+                    document.Info.Description = "The AspnetRun Service HTTP API";
                     document.Info.TermsOfService = "Terms Of Service";
                     document.Info.Contact = new NSwag.SwaggerContact
                     {
-                        Name = "Abdulkadir Genç",
+                        Name = "AspnetRun",
                         Email = string.Empty,
                         Url = string.Empty
                     };
