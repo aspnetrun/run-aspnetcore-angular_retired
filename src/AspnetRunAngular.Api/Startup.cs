@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Reflection;
 using AspnetRunAngular.Core.Configuration;
+using AspnetRunAngular.Infrastructure.Data;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -105,16 +108,15 @@ namespace AspnetRunAngular.Api
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services, AspnetRunSettings aspnetRunSettings)
         {
             // use in-memory database
-            //services.AddDbContext<ExpertiseContext>(c => c.UseInMemoryDatabase("Expertise"));
+            //services.AddDbContext<ExpertiseContext>(c => c.UseInMemoryDatabase("AspnetRun"));
 
             // Add Expertise DbContext
             services
                 .AddEntityFrameworkSqlServer()
-                .AddDbContext<ExpertiseContext>(options =>
+                .AddDbContext<AspnetRunContext>(options =>
                         options.UseSqlServer(aspnetRunSettings.ConnectionString,
                         sqlOptions =>
                         {
-                            sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
                             sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                         }
                     ),
