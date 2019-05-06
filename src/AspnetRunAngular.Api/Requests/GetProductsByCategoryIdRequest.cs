@@ -2,7 +2,7 @@
 
 namespace AspnetRunAngular.Api.Requests
 {
-    public class GetProductByCategoryIdRequest
+    public class GetProductsByCategoryIdRequest
     {
         public Guid CategoryId { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using AspnetRunAngular.Application.Interfaces;
+﻿using AspnetRunAngular.Api.Requests;
+using AspnetRunAngular.Application.Interfaces;
 using AspnetRunAngular.Application.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -32,10 +33,37 @@ namespace AspnetRunAngular.Api.Controllers
             return Ok(products);
         }
 
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType(typeof(ProductModel), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<ProductModel>> GetProductById(GetProductByIdRequest request)
+        {
+            var product = await _productService.GetProductById(request.Id);
+
+            return Ok(product);
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType(typeof(IEnumerable<ProductModel>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByName(GetProductsByNameRequest request)
+        {
+            var products = await _productService.GetProductsByName(request.Name);
+
+            return Ok(products);
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType(typeof(IEnumerable<ProductModel>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductsByCategoryId(GetProductsByCategoryIdRequest request)
+        {
+            var products = await _productService.GetProductsByCategoryId(request.CategoryId);
+
+            return Ok(products);
+        }
+
         /*
-                Task<ProductModel> GetProductById(Guid productId);
-                Task<IEnumerable<ProductModel>> GetProductByName(string name);
-                Task<IEnumerable<ProductModel>> GetProductByCategoryId(Guid categoryId);
                 Task<ProductModel> Create(ProductModel product);
                 Task Update(ProductModel product);
                 Task Delete(ProductModel product);

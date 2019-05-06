@@ -1,6 +1,6 @@
 ﻿namespace AspnetRunAngular.Api.Requests
 {
-    public class GetProductByNameRequest
+    public class GetProductsByNameRequest
     {
         public string Name { get; set; }
     }

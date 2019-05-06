@@ -39,18 +39,18 @@ namespace AspnetRunAngular.Application.Services
             return productModel;
         }
 
-        public async Task<IEnumerable<ProductModel>> GetProductByName(string name)
+        public async Task<IEnumerable<ProductModel>> GetProductsByName(string name)
         {
-            var productList = await _productRepository.GetProductByNameAsync(name);
+            var productList = await _productRepository.GetProductsByNameAsync(name);
 
             var productModels = ObjectMapper.Mapper.Map<IEnumerable<ProductModel>>(productList);
 
             return productModels;
         }
 
-        public async Task<IEnumerable<ProductModel>> GetProductByCategoryId(Guid categoryId)
+        public async Task<IEnumerable<ProductModel>> GetProductsByCategoryId(Guid categoryId)
         {
-            var productList = await _productRepository.GetProductByCategoryIdAsync(categoryId);
+            var productList = await _productRepository.GetProductsByCategoryIdAsync(categoryId);
 
             var productModels = ObjectMapper.Mapper.Map<IEnumerable<ProductModel>>(productList);
 

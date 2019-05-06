@@ -4,9 +4,9 @@ using System;
 
 namespace AspnetRunAngular.Api.Application.Validations
 {
-    public class GetProductByCategoryIdRequestValidator : AbstractValidator<GetProductByCategoryIdRequest>
+    public class GetProductsByCategoryIdRequestValidator : AbstractValidator<GetProductsByCategoryIdRequest>
     {
-        public GetProductByCategoryIdRequestValidator()
+        public GetProductsByCategoryIdRequestValidator()
         {
             RuleFor(request => request.CategoryId).Must(NotEqualToEmptyGuid);
         }

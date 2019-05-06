@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace AspnetRunAngular.Api.Application.Validations
 {
-    public class GetProductByNameRequestValidator : AbstractValidator<GetProductByNameRequest>
+    public class GetProductsByNameRequestValidator : AbstractValidator<GetProductsByNameRequest>
     {
-        public GetProductByNameRequestValidator()
+        public GetProductsByNameRequestValidator()
         {
             RuleFor(request => request.Name).NotEmpty();
         }

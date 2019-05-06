@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace AspnetRunAngular.Infrastructure.Repository
 {
+    //TODO: Dynamicly include children entities in GetByIdAsync and ListAllAsync (i.e. Product.Category and Product.Status)
+    // Check specification pattern
     public class ProductRepository : Repository<Product>, IProductRepository
     {
         public ProductRepository(AspnetRunContext context)
@@ -17,14 +19,14 @@ namespace AspnetRunAngular.Infrastructure.Repository
         {
         }
 
-        public async Task<IEnumerable<Product>> GetProductByCategoryIdAsync(Guid categoryId)
+        public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(Guid categoryId)
         {
-            return await Table.Where(p => p.CategoryId == categoryId).ToListAsync();
+            return await Table.Include(p => p.Category).Include(p => p.Status).Where(p => p.CategoryId == categoryId).ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetProductByNameAsync(string productName)
+        public async Task<IEnumerable<Product>> GetProductsByNameAsync(string productName)
         {
-            return await Table.Where(p => p.Name == productName).ToListAsync();
+            return await Table.Include(p => p.Category).Include(p => p.Status).Where(p => p.Name == productName).ToListAsync();
         }
     }
 }
