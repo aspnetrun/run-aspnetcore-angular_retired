@@ -1,4 +1,6 @@
-﻿using Autofac;
+﻿using AspnetRunAngular.Api.Application.Behaviors;
+using AspnetRunAngular.Api.Requests;
+using Autofac;
 using MediatR;
 using System.Reflection;
 
@@ -11,10 +13,9 @@ namespace AspnetRunAngular.Api.Infrastructure.AutofacModules
             builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
                 .AsImplementedInterfaces();
 
-            //TODO:
             // Register all the Command classes (they implement IRequestHandler) in assembly holding the Commands
-            //builder.RegisterAssemblyTypes(typeof(SaveAppointmentRequest).GetTypeInfo().Assembly)
-            //    .AsClosedTypesOf(typeof(IRequestHandler<,>));
+            builder.RegisterAssemblyTypes(typeof(CreateProductRequest).GetTypeInfo().Assembly)
+                .AsClosedTypesOf(typeof(IRequestHandler<,>));
 
             builder.Register<ServiceFactory>(context =>
             {
@@ -22,8 +23,7 @@ namespace AspnetRunAngular.Api.Infrastructure.AutofacModules
                 return t => { object o; return componentContext.TryResolve(t, out o) ? o : null; };
             });
 
-            //TODO:
-            //builder.RegisterGeneric(typeof(TransactionBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
+            builder.RegisterGeneric(typeof(TransactionBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
         }
     }
 }
