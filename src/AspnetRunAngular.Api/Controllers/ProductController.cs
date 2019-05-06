@@ -63,10 +63,37 @@ namespace AspnetRunAngular.Api.Controllers
             return Ok(products);
         }
 
-        /*
-                Task<ProductModel> Create(ProductModel product);
-                Task Update(ProductModel product);
-                Task Delete(ProductModel product);
-        */
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType(typeof(ProductModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<ActionResult<ProductModel>> CreateProduct(CreateProductRequest request)
+        {
+            var commandResult = await _mediator.Send(request);
+
+            return Ok(commandResult);
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<ActionResult> UpdateProduct(UpdateProductRequest request)
+        {
+            var commandResult = await _mediator.Send(request);
+
+            return Ok(commandResult);
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<ActionResult> DeleteProduct(DeleteProductRequest request)
+        {
+            var commandResult = await _mediator.Send(request);
+
+            return Ok(commandResult);
+        }
     }
 }
