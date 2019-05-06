@@ -17,7 +17,7 @@ namespace AspnetRunAngular.Infrastructure.Repository
         {
         }
 
-        public async Task<IEnumerable<Product>> GetProductByCategoryAsync(Guid categoryId)
+        public async Task<IEnumerable<Product>> GetProductByCategoryIdAsync(Guid categoryId)
         {
             return await Table.Where(p => p.CategoryId == categoryId).ToListAsync();
         }

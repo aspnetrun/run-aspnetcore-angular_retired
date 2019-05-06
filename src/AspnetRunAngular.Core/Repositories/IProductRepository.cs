@@ -9,6 +9,6 @@ namespace AspnetRunAngular.Core.Repositories
     public interface IProductRepository : IRepository<Product>
     {
         Task<IEnumerable<Product>> GetProductByNameAsync(string productName);
-        Task<IEnumerable<Product>> GetProductByCategoryAsync(Guid categoryId);
+        Task<IEnumerable<Product>> GetProductByCategoryIdAsync(Guid categoryId);
     }
 }

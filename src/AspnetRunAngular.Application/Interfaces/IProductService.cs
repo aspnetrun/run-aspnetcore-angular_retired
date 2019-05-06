@@ -10,7 +10,7 @@ namespace AspnetRunAngular.Application.Interfaces
         Task<IEnumerable<ProductModel>> GetProductList();
         Task<ProductModel> GetProductById(Guid productId);
         Task<IEnumerable<ProductModel>> GetProductByName(string name);
-        Task<IEnumerable<ProductModel>> GetProductByCategory(Guid categoryId);
+        Task<IEnumerable<ProductModel>> GetProductByCategoryId(Guid categoryId);
         Task<ProductModel> Create(ProductModel product);
         Task Update(ProductModel product);
         Task Delete(ProductModel product);

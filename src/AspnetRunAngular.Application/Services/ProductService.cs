@@ -48,9 +48,9 @@ namespace AspnetRunAngular.Application.Services
             return productModels;
         }
 
-        public async Task<IEnumerable<ProductModel>> GetProductByCategory(Guid categoryId)
+        public async Task<IEnumerable<ProductModel>> GetProductByCategoryId(Guid categoryId)
         {
-            var productList = await _productRepository.GetProductByCategoryAsync(categoryId);
+            var productList = await _productRepository.GetProductByCategoryIdAsync(categoryId);
 
             var productModels = ObjectMapper.Mapper.Map<IEnumerable<ProductModel>>(productList);
 
