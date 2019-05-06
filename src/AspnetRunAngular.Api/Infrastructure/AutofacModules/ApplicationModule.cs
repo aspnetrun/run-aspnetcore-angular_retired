@@ -1,9 +1,11 @@
 ﻿using AspnetRunAngular.Api.Application.Validations;
 using AspnetRunAngular.Application.Interfaces;
 using AspnetRunAngular.Application.Services;
+using AspnetRunAngular.Core.Interfaces;
 using AspnetRunAngular.Core.Repositories;
 using AspnetRunAngular.Core.Repositories.Base;
 using AspnetRunAngular.Infrastructure.Data;
+using AspnetRunAngular.Infrastructure.Logging;
 using AspnetRunAngular.Infrastructure.Repository;
 using AspnetRunAngular.Infrastructure.Repository.Base;
 using Autofac;
@@ -23,6 +25,8 @@ namespace AspnetRunAngular.Api.Infrastructure.AutofacModules
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerDependency();
             builder.RegisterGeneric(typeof(EnumRepository<>)).As(typeof(IEnumRepository<>)).InstancePerDependency();
             builder.RegisterGeneric(typeof(RepositoryBase<,>)).As(typeof(IRepositoryBase<,>)).InstancePerDependency();
+
+            builder.RegisterGeneric(typeof(LoggerAdapter<>)).As(typeof(IAppLogger<>)).InstancePerDependency();
 
             // services
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerLifetimeScope();
