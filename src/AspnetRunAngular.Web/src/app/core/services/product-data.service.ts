@@ -1,22 +1,50 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { IAppointmentsSearchArgs, IAppointment, IPage } from 'src/app/shared/interfaces';
 import { environment } from 'src/environments/environment';
+import { IProduct } from 'src/app/shared/interfaces';
 
 @Injectable()
 export class ProductDataService {
     constructor(private httpClient: HttpClient) { }
 
-    // filterAppointments(args: IAppointmentsSearchArgs): Observable<IPage<IAppointment>> {
-    //     var request = { searchArgs: args };
+    getProducts(): Observable<IProduct[]> {
+        return this.httpClient.get<IProduct[]>(environment.apiUrl + '/Product/GetProducts');
+    }
 
-    //     return this.httpClient.post<IPage<IAppointment>>(environment.apiUrl + '/product/FilterAppointments', request);
-    // }
+    getProductById(id: string): Observable<IProduct> {
+        var request = { id: id };
 
-    // getAppointmentById(id: string): Observable<IAppointment> {
-    //     var request = { id: id };
+        return this.httpClient.post<IProduct>(environment.apiUrl + '/Product/GetProductById', request);
+    }
 
-    //     return this.httpClient.post<IAppointment>(environment.apiUrl + '/product/GetAppointmentById', request);
-    // }
+    getProductsByName(name: string): Observable<IProduct[]> {
+        var request = { name: name };
+
+        return this.httpClient.post<IProduct[]>(environment.apiUrl + '/Product/GetProductsByName', request);
+    }
+
+    getProductsByCategoryId(categoryId: string): Observable<IProduct[]> {
+        var request = { categoryId: categoryId };
+
+        return this.httpClient.post<IProduct[]>(environment.apiUrl + '/Product/GetProductsByCategoryId', request);
+    }
+
+    createProduct(product: IProduct): Observable<IProduct> {
+        var request = { product: product };
+
+        return this.httpClient.post<IProduct>(environment.apiUrl + '/Product/CreateProduct', request);
+    }
+
+    updateProduct(product: IProduct): Observable<any> {
+        var request = { product: product };
+
+        return this.httpClient.post<boolean>(environment.apiUrl + '/Product/UpdateProduct', request);
+    }
+
+    deleteProduct(product: IProduct): Observable<any> {
+        var request = { product: product };
+
+        return this.httpClient.post<boolean>(environment.apiUrl + '/Product/DeleteProduct', request);
+    }
 }
