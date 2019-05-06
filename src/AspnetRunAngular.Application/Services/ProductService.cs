@@ -10,7 +10,7 @@ using AspnetRunAngular.Core.Repositories;
 
 namespace AspnetRunAngular.Application.Services
 {
-    class ProductService : IProductService
+    public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
         private readonly IAppLogger<ProductService> _logger;

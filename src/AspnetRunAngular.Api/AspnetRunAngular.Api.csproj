@@ -19,8 +19,4 @@
     <ProjectReference Include="..\AspnetRunAngular.Infrastructure\AspnetRunAngular.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Validations\" />
-  </ItemGroup>
-
 </Project>
