@@ -39,12 +39,12 @@ export class ProductDataService {
     updateProduct(product: IProduct): Observable<any> {
         var request = { product: product };
 
-        return this.httpClient.post<boolean>(environment.apiUrl + '/Product/UpdateProduct', request);
+        return this.httpClient.post<any>(environment.apiUrl + '/Product/UpdateProduct', request);
     }
 
     deleteProduct(product: IProduct): Observable<any> {
         var request = { product: product };
 
-        return this.httpClient.post<boolean>(environment.apiUrl + '/Product/DeleteProduct', request);
+        return this.httpClient.post<any>(environment.apiUrl + '/Product/DeleteProduct', request);
     }
 }

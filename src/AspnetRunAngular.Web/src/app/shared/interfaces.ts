@@ -18,39 +18,3 @@ export interface IProductStatus {
     code?: string;
     name?: string;
 }
-
-export interface IProductsSearchArgs {
-    pagingArgs: IPagingArgs;
-    sortColumns: ISortColumn[];
-}
-
-export interface IPagingArgs {
-    pageSize: number;
-    currentPage: number;
-    pagingStrategy: PagingStrategy;
-}
-
-export enum PagingStrategy {
-    NoCount = 0,
-    WithCount = 1,
-}
-
-export interface IPage<T> {
-    currentPage: number;
-    pageSize: number;
-    totalPages: number;
-    totalItems: number;
-    hasMore: boolean;
-    items: T[];
-}
-
-export interface ISortColumn {
-    name: string;
-    direction: SortDirection;
-    priority: number;
-}
-
-export enum SortDirection {
-    Asc = 1,
-    Desc = -1
-}
