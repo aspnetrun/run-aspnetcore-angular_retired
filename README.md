@@ -21,5 +21,5 @@ It will include;
 * ASP.NET Core Web API Layer
 * CQRS pattern
 * Event Sourcing
-* Implementation of MedatR, Autofac, FluentValidator, AutoMapper
+* Implementation of MediatR, Autofac, FluentValidator, AutoMapper
 * swagger
