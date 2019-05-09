@@ -2,6 +2,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ProductDataService } from './services/product-data.service';
+import { CategoryDataService } from './services/category-data.service';
 import { ValidationService } from './services/validation.service';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     ProductDataService,
+    CategoryDataService,
     ValidationService,
     SpinnerService,
     {

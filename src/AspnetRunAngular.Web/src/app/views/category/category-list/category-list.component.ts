@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CategoryDataService } from 'src/app/core/services/category-data.service';
+import { ActivatedRoute } from '@angular/router';
+import { ICategory } from 'src/app/shared/interfaces';
 
 @Component({
-  selector: 'app-category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.scss']
+  styleUrls: ['./category-list.component.css']
 })
-export class CategoryListComponent implements OnInit {
+export class CategoryListComponent {
+  categories: ICategory[];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private dataService: CategoryDataService, route: ActivatedRoute) {
+    route.params.subscribe(() => {
+      this.getCategories();
+    });
   }
 
+  getCategories() {
+    this.dataService.getCategories().subscribe((categories: ICategory[]) => {
+      this.categories = categories;
+    });
+  }
 }
