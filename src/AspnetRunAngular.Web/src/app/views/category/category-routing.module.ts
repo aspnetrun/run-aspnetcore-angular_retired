@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CategoryListComponent } from './category-list/category-list.component';
-import { CategoryDetailComponent } from './category-detail/category-detail.component';
 
 const routes: Routes = [
   {
@@ -11,7 +10,6 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'category-list' },
       { path: 'category-list', component: CategoryListComponent, data: { title: 'List' } },
-      { path: 'category-detail/:id', component: CategoryDetailComponent, data: { title: 'Detail' } },
     ]
   }
 ];
@@ -21,5 +19,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class CategoryRoutingModule {
-  static components = [CategoryListComponent, CategoryDetailComponent];
+  static components = [CategoryListComponent];
 }
