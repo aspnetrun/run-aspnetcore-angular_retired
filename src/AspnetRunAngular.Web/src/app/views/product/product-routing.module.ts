@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductDeleteModalComponent } from './product-delete/product-delete-modal.component';
 
 const routes: Routes = [
   {
@@ -21,5 +22,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ProductRoutingModule {
-  static components = [ProductListComponent, ProductDetailComponent];
+  static components = [ProductListComponent, ProductDetailComponent, ProductDeleteModalComponent];
 }

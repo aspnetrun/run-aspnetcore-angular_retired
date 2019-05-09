@@ -12,7 +12,7 @@ export class ProductDataService {
         return this.httpClient.get<IProduct[]>(environment.apiUrl + '/Product/GetProducts');
     }
 
-    getProductById(id: string): Observable<IProduct> {
+    getProductById(id: number): Observable<IProduct> {
         var request = { id: id };
 
         return this.httpClient.post<IProduct>(environment.apiUrl + '/Product/GetProductById', request);
@@ -42,9 +42,9 @@ export class ProductDataService {
         return this.httpClient.post<any>(environment.apiUrl + '/Product/UpdateProduct', request);
     }
 
-    deleteProduct(product: IProduct): Observable<any> {
-        var request = { product: product };
+    deleteProductById(id: number): Observable<any> {
+        var request = { id: id };
 
-        return this.httpClient.post<any>(environment.apiUrl + '/Product/DeleteProduct', request);
+        return this.httpClient.post<any>(environment.apiUrl + '/Product/DeleteProductById', request);
     }
 }

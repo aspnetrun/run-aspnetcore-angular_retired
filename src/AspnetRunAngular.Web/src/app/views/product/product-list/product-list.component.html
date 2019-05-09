@@ -36,8 +36,10 @@
             <td>
                 <a class="btn btn-sm mr-1 btn-info" [routerLink]="['/product/product-detail/' + product.id]">Details</a>
                 <a class="btn btn-sm mr-1 btn-warning" [routerLink]="['/product/product-edit/' + product.id]">Edit</a>
-                <a class="btn btn-sm mr-1 btn-danger"
-                    [routerLink]="['/product/product-delete/' + product.id]">Delete</a>
+                <button type="button" class="btn btn-sm mr-1 btn-danger" data-toggle="modal"
+                    (click)="deleteModal.show()">Delete</button>
+                <product-delete-modal #deleteModal [productId]="product.id" (productDeleted)="getProducts()">
+                </product-delete-modal>
             </td>
         </tr>
     </tbody>

@@ -20,9 +20,9 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private dataService: ProductDataService, private router: Router, private route: ActivatedRoute) {
     route.params.subscribe(val => {
-      const id = this.route.snapshot.paramMap.get('id');
+      const id = +this.route.snapshot.paramMap.get('id');
 
-      if (id !== undefined && id != null && id !== '' && id !== '0') {
+      if (id !== undefined && id != null && id !== 0) {
         this.dataService.getProductById(id).subscribe((product: IProduct) => {
           if (product != null) {
             this.product = product;
@@ -39,5 +39,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  close() {
+    this.router.navigate(['/product/product-list']);
   }
 }

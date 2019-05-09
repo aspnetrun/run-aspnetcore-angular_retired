@@ -17,7 +17,6 @@ export class ProductListComponent {
     });
   }
 
-
   getProducts() {
     this.dataService.getProducts().subscribe((products: IProduct[]) => {
       this.products = products;
