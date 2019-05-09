@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ControlMessageComponent } from './control-messages/control-message.component';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RouterModule } from '@angular/router';
 
@@ -12,7 +11,6 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     RouterModule,
-    NgxDatatableModule,
     ModalModule.forRoot(),
   ],
   exports: [
