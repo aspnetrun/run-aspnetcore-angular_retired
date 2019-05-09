@@ -7,7 +7,7 @@ namespace AspnetRunAngular.Api.Application.Validations
     {
         public GetProductByIdRequestValidator()
         {
-            RuleFor(request => request.Id).GreaterThan(1);
+            RuleFor(request => request.Id).GreaterThan(0);
         }
     }
 }
