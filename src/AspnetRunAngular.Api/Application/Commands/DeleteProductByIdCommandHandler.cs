@@ -6,18 +6,18 @@ using MediatR;
 
 namespace AspnetRunAngular.Api.Application.Commands
 {
-    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductRequest>
+    public class DeleteProductByIdCommandHandler : IRequestHandler<DeleteProductByIdRequest>
     {
         private readonly IProductService _productService;
 
-        public DeleteProductCommandHandler(IProductService productService)
+        public DeleteProductByIdCommandHandler(IProductService productService)
         {
             _productService = productService;
         }
 
-        public async Task<Unit> Handle(DeleteProductRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteProductByIdRequest request, CancellationToken cancellationToken)
         {
-            await _productService.Delete(request.Product);
+            await _productService.DeleteProductById(request.Id);
 
             return Unit.Value;
         }

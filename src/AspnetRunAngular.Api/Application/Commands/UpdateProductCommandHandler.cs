@@ -17,7 +17,7 @@ namespace AspnetRunAngular.Api.Application.Commands
 
         public async Task<Unit> Handle(UpdateProductRequest request, CancellationToken cancellationToken)
         {
-            await _productService.Update(request.Product);
+            await _productService.UpdateProduct(request.Product);
 
             return Unit.Value;
         }

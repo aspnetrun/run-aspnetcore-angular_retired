@@ -119,7 +119,7 @@ namespace AspnetRunAngular.Api
                         {
                             sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                         }
-                    ).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking),
+                    ),
                     ServiceLifetime.Scoped
                  );
 

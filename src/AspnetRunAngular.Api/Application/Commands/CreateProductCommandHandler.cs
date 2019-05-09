@@ -19,7 +19,7 @@ namespace AspnetRunAngular.Api.Application.Commands
 
         public async Task<ProductModel> Handle(CreateProductRequest request, CancellationToken cancellationToken)
         {
-            var productModel = await _productService.Create(request.Product);
+            var productModel = await _productService.CreateProduct(request.Product);
 
             return productModel;
         }

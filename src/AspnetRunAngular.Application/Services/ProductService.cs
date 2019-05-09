@@ -57,7 +57,7 @@ namespace AspnetRunAngular.Application.Services
             return productModels;
         }
 
-        public async Task<ProductModel> Create(ProductModel product)
+        public async Task<ProductModel> CreateProduct(ProductModel product)
         {
             await ValidateProductIfExist(product);
 
@@ -70,9 +70,9 @@ namespace AspnetRunAngular.Application.Services
             return newMappedEntity;
         }
 
-        public async Task Update(ProductModel product)
+        public async Task UpdateProduct(ProductModel product)
         {
-            await ValidateProductIfNotExist(product);
+            await ValidateProductIfNotExist(product.Id);
 
             var mappedEntity = ObjectMapper.Mapper.Map<Product>(product);
             await _productRepository.SaveAsync(mappedEntity);
@@ -80,12 +80,12 @@ namespace AspnetRunAngular.Application.Services
             _logger.LogInformation($"Entity successfully updated - AspnetRunAppService");
         }
 
-        public async Task Delete(ProductModel product)
+        public async Task DeleteProductById(int productId)
         {
-            await ValidateProductIfNotExist(product);
+            await ValidateProductIfNotExist(productId);
 
-            var mappedEntity = ObjectMapper.Mapper.Map<Product>(product);
-            await _productRepository.DeleteAsync(mappedEntity);
+            var existingProduct = await _productRepository.GetByIdAsync(productId);
+            await _productRepository.DeleteAsync(existingProduct);
 
             _logger.LogInformation($"Entity successfully deleted - AspnetRunAppService");
         }
@@ -97,11 +97,11 @@ namespace AspnetRunAngular.Application.Services
                 throw new ApplicationException($"{product.ToString()} with this id already exists");
         }
 
-        private async Task ValidateProductIfNotExist(ProductModel product)
+        private async Task ValidateProductIfNotExist(int productId)
         {
-            var existingEntity = await _productRepository.GetByIdAsync(product.Id);
+            var existingEntity = await _productRepository.GetByIdAsync(productId);
             if (existingEntity == null)
-                throw new ApplicationException($"{product.ToString()} with this id is not exists");
+                throw new ApplicationException($"Product with this id is not exists");
         }
     }
 }

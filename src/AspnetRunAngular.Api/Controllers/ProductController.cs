@@ -89,7 +89,7 @@ namespace AspnetRunAngular.Api.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult> DeleteProduct(DeleteProductRequest request)
+        public async Task<ActionResult> DeleteProductById(DeleteProductByIdRequest request)
         {
             var commandResult = await _mediator.Send(request);
 
