@@ -7,9 +7,10 @@ import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { SpinnerService } from './services/spinner.service';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [LayoutComponent],
   imports: [
     NgxUiLoaderModule,
     //NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
@@ -18,6 +19,7 @@ import { SpinnerService } from './services/spinner.service';
   exports: [
     HttpClientModule,
     NgxUiLoaderModule,
+    LayoutComponent,
   ],
   providers: [
     ProductDataService,
