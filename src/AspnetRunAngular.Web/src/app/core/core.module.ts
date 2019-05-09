@@ -8,15 +8,18 @@ import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { SpinnerService } from './services/spinner.service';
 import { LayoutComponent } from './layout/layout.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [LayoutComponent],
   imports: [
+    RouterModule,
     NgxUiLoaderModule,
     //NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
   ],
   exports: [
+    RouterModule,
     HttpClientModule,
     NgxUiLoaderModule,
     LayoutComponent,
