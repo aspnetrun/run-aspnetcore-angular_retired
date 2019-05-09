@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControlMessageComponent } from './control-messages/control-message.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { DataGridComponent } from './data-grid/data-grid.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -22,11 +21,9 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     ModalModule,
     ControlMessageComponent,
-    DataGridComponent,
   ],
   declarations: [
     ControlMessageComponent,
-    DataGridComponent,
   ]
 })
 export class SharedModule { }
