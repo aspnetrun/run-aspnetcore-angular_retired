@@ -30,6 +30,7 @@ namespace AspnetRunAngular.Api.Infrastructure.AutofacModules
 
             // services
             builder.RegisterType<ProductService>().As<IProductService>().InstancePerLifetimeScope();
+            builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerLifetimeScope();
 
             builder.RegisterType<AspnetRunContextSeed>();
 
