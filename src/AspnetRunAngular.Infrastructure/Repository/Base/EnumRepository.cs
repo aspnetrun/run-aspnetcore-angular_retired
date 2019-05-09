@@ -5,7 +5,7 @@ using AspnetRunAngular.Infrastructure.Data;
 namespace AspnetRunAngular.Infrastructure.Repository.Base
 {
     public class EnumRepository<T> : RepositoryBase<T, int>, IEnumRepository<T>
-    where T : class, IEntityBase<int>
+        where T : class, IEntityBase<int>
     {
         public EnumRepository(AspnetRunContext context)
             : base(context)

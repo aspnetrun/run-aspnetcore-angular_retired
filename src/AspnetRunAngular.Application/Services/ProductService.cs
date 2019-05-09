@@ -30,7 +30,7 @@ namespace AspnetRunAngular.Application.Services
             return productModels;
         }
 
-        public async Task<ProductModel> GetProductById(Guid productId)
+        public async Task<ProductModel> GetProductById(int productId)
         {
             var product = await _productRepository.GetByIdAsync(productId);
 
@@ -48,7 +48,7 @@ namespace AspnetRunAngular.Application.Services
             return productModels;
         }
 
-        public async Task<IEnumerable<ProductModel>> GetProductsByCategoryId(Guid categoryId)
+        public async Task<IEnumerable<ProductModel>> GetProductsByCategoryId(int categoryId)
         {
             var productList = await _productRepository.GetProductsByCategoryIdAsync(categoryId);
 

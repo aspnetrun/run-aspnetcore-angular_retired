@@ -2,7 +2,7 @@
 
 namespace AspnetRunAngular.Core.Entities.Base
 {
-    public abstract class Entity : EntityBase<Guid>
+    public abstract class Entity : EntityBase<int>
     {
         public Guid? CreatedById { get; set; }
 

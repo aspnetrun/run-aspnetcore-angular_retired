@@ -3,7 +3,6 @@ using AspnetRunAngular.Core.Repositories;
 using AspnetRunAngular.Infrastructure.Data;
 using AspnetRunAngular.Infrastructure.Repository.Base;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +18,7 @@ namespace AspnetRunAngular.Infrastructure.Repository
         {
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(Guid categoryId)
+        public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId)
         {
             return await Table.Include(p => p.Category).Include(p => p.Status).Where(p => p.CategoryId == categoryId).ToListAsync();
         }

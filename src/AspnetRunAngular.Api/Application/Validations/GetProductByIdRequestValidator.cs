@@ -1,6 +1,5 @@
 ﻿using AspnetRunAngular.Api.Requests;
 using FluentValidation;
-using System;
 
 namespace AspnetRunAngular.Api.Application.Validations
 {
@@ -8,12 +7,7 @@ namespace AspnetRunAngular.Api.Application.Validations
     {
         public GetProductByIdRequestValidator()
         {
-            RuleFor(request => request.Id).Must(NotEqualToEmptyGuid);
-        }
-
-        private bool NotEqualToEmptyGuid(Guid arg)
-        {
-            return arg != Guid.Empty;
+            RuleFor(request => request.Id).GreaterThan(1);
         }
     }
 }

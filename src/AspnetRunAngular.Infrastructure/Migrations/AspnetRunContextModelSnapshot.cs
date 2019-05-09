@@ -21,8 +21,9 @@ namespace AspnetRunAngular.Infrastructure.Migrations
 
             modelBuilder.Entity("AspnetRunAngular.Core.Entities.Category", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid?>("CreatedById");
 
@@ -45,10 +46,11 @@ namespace AspnetRunAngular.Infrastructure.Migrations
 
             modelBuilder.Entity("AspnetRunAngular.Core.Entities.Product", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<Guid?>("CreatedById");
 

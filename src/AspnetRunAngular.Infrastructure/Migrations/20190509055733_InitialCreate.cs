@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspnetRunAngular.Infrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +12,8 @@ namespace AspnetRunAngular.Infrastructure.Migrations
                 name: "Category",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreatedById = table.Column<Guid>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     UpdatedById = table.Column<Guid>(nullable: true),
@@ -42,7 +44,8 @@ namespace AspnetRunAngular.Infrastructure.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreatedById = table.Column<Guid>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     UpdatedById = table.Column<Guid>(nullable: true),
@@ -51,7 +54,7 @@ namespace AspnetRunAngular.Infrastructure.Migrations
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     UnitPrice = table.Column<decimal>(nullable: true),
-                    CategoryId = table.Column<Guid>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
                     StatusId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

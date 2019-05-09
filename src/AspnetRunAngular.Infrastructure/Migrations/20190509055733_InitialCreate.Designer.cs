@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspnetRunAngular.Infrastructure.Migrations
 {
     [DbContext(typeof(AspnetRunContext))]
-    [Migration("20190506085530_Initial")]
-    partial class Initial
+    [Migration("20190509055733_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,8 +23,9 @@ namespace AspnetRunAngular.Infrastructure.Migrations
 
             modelBuilder.Entity("AspnetRunAngular.Core.Entities.Category", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<Guid?>("CreatedById");
 
@@ -47,10 +48,11 @@ namespace AspnetRunAngular.Infrastructure.Migrations
 
             modelBuilder.Entity("AspnetRunAngular.Core.Entities.Product", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<Guid?>("CreatedById");
 

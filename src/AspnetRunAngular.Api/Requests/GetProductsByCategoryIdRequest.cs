@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace AspnetRunAngular.Api.Requests
+﻿namespace AspnetRunAngular.Api.Requests
 {
     public class GetProductsByCategoryIdRequest
     {
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
     }
 }
