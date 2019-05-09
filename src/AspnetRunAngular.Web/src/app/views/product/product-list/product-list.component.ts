@@ -10,6 +10,7 @@ import { IProduct } from 'src/app/shared/interfaces';
 })
 export class ProductListComponent {
   products: IProduct[];
+  productName: string = '';
 
   constructor(private dataService: ProductDataService, route: ActivatedRoute) {
     route.params.subscribe(() => {
@@ -18,7 +19,7 @@ export class ProductListComponent {
   }
 
   getProducts() {
-    this.dataService.getProducts().subscribe((products: IProduct[]) => {
+    this.dataService.getProductsByName(this.productName).subscribe((products: IProduct[]) => {
       this.products = products;
     });
   }

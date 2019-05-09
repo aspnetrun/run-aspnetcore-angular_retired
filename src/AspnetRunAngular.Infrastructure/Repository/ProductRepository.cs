@@ -25,7 +25,7 @@ namespace AspnetRunAngular.Infrastructure.Repository
 
         public async Task<IEnumerable<Product>> GetProductsByNameAsync(string productName)
         {
-            return await Table.Include(p => p.Category).Where(p => p.Name == productName).ToListAsync();
+            return await Table.Include(p => p.Category).Where(p => p.Name.Contains(productName)).ToListAsync();
         }
     }
 }

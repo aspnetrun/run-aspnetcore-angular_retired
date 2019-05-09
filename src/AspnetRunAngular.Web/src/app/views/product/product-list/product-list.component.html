@@ -3,11 +3,9 @@
 <form method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" asp-for="SearchTerm" />
+            <input type="search" class="form-control" [(ngModel)]="productName" name="productName" />
             <span class="input-group-btn">
-                <button class="btn btn-primary">
-                    Search
-                </button>
+                <button class="btn btn-primary" (click)="getProducts()">Search</button>
             </span>
         </div>
     </div>

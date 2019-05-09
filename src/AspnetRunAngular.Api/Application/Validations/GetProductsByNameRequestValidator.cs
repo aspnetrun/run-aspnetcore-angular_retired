@@ -7,7 +7,7 @@ namespace AspnetRunAngular.Api.Application.Validations
     {
         public GetProductsByNameRequestValidator()
         {
-            RuleFor(request => request.Name).NotEmpty();
+            RuleFor(request => request.Name).NotNull();
         }
     }
 }
