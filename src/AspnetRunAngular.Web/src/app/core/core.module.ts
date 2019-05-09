@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     NgxUiLoaderModule,
     //NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
-    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: false }),
   ],
   exports: [
     RouterModule,
