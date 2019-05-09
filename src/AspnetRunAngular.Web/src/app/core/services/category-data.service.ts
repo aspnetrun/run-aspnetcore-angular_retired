@@ -9,6 +9,6 @@ export class CategoryDataService {
     constructor(private httpClient: HttpClient) { }
 
     getCategories(): Observable<ICategory[]> {
-        return this.httpClient.get<ICategory[]>(environment.apiUrl + '/Product/GetCategories');
+        return this.httpClient.get<ICategory[]>(environment.apiUrl + '/Category/GetCategories');
     }
 }
