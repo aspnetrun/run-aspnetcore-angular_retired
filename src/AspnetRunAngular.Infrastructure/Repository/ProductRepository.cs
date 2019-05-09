@@ -20,12 +20,12 @@ namespace AspnetRunAngular.Infrastructure.Repository
 
         public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId)
         {
-            return await Table.Include(p => p.Category).Include(p => p.Status).Where(p => p.CategoryId == categoryId).ToListAsync();
+            return await Table.Include(p => p.Category).Where(p => p.CategoryId == categoryId).ToListAsync();
         }
 
         public async Task<IEnumerable<Product>> GetProductsByNameAsync(string productName)
         {
-            return await Table.Include(p => p.Category).Include(p => p.Status).Where(p => p.Name == productName).ToListAsync();
+            return await Table.Include(p => p.Category).Where(p => p.Name == productName).ToListAsync();
         }
     }
 }

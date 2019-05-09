@@ -19,7 +19,6 @@ namespace AspnetRunAngular.Application.Mapper
             {
                 cfg.CreateMap<Product, ProductModel>().ReverseMap();
                 cfg.CreateMap<Category, CategoryModel>().ReverseMap();
-                cfg.CreateMap<ProductStatus, ProductStatusModel>().ReverseMap();
             });
         }
     }

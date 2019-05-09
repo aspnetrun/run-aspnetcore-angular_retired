@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspnetRunAngular.Infrastructure.Migrations
 {
     [DbContext(typeof(AspnetRunContext))]
-    [Migration("20190509055733_InitialCreate")]
+    [Migration("20190509083909_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,19 +27,9 @@ namespace AspnetRunAngular.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
                     b.Property<string>("Description");
 
-                    b.Property<bool>("IsDeleted");
-
                     b.Property<string>("Name");
-
-                    b.Property<Guid?>("UpdatedById");
-
-                    b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
 
@@ -54,44 +44,17 @@ namespace AspnetRunAngular.Infrastructure.Migrations
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<Guid?>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
                     b.Property<string>("Description");
-
-                    b.Property<bool>("IsDeleted");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("StatusId");
-
                     b.Property<decimal?>("UnitPrice");
-
-                    b.Property<Guid?>("UpdatedById");
-
-                    b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("StatusId");
-
                     b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("AspnetRunAngular.Core.Entities.ProductStatus", b =>
-                {
-                    b.Property<int>("Id");
-
-                    b.Property<string>("Code");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductStatus");
                 });
 
             modelBuilder.Entity("AspnetRunAngular.Core.Entities.Product", b =>
@@ -99,11 +62,6 @@ namespace AspnetRunAngular.Infrastructure.Migrations
                     b.HasOne("AspnetRunAngular.Core.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("AspnetRunAngular.Core.Entities.ProductStatus", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

@@ -9,7 +9,5 @@ namespace AspnetRunAngular.Core.Entities
         public decimal? UnitPrice { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
-        public int StatusId { get; set; }
-        public ProductStatus Status { get; set; }
     }
 }

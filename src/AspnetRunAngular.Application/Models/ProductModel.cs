@@ -10,7 +10,5 @@ namespace AspnetRunAngular.Application.Models
         public decimal? UnitPrice { get; set; }
         public Guid CategoryId { get; set; }
         public CategoryModel Category { get; set; }
-        public int StatusId { get; set; }
-        public ProductStatusModel Status { get; set; }
     }
 }

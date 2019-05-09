@@ -14,8 +14,7 @@ export class ProductDetailComponent implements OnInit {
     name: '',
     description: '',
     unitPrice: 0,
-    category: { id: null },
-    status: { id: null }
+    category: { id: null }
   };
 
   constructor(private dataService: ProductDataService, private router: Router, private route: ActivatedRoute) {
