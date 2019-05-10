@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace AspnetRunAngular.Infrastructure.Repository
 {
-    //TODO: Dynamicly include children entities in GetByIdAsync and ListAllAsync (i.e. Product.Category and Product.Status)
-    // Check specification pattern
     public class ProductRepository : Repository<Product>, IProductRepository
     {
         public ProductRepository(AspnetRunContext context)
