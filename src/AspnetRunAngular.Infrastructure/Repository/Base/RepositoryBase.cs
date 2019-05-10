@@ -30,7 +30,7 @@ namespace AspnetRunAngular.Infrastructure.Repository.Base
             }
         }
 
-        public async Task<T> GetByIdAsync(TId id)
+        public async virtual Task<T> GetByIdAsync(TId id)
         {
             return await Entities.FindAsync(id);
         }
@@ -65,7 +65,7 @@ namespace AspnetRunAngular.Infrastructure.Repository.Base
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyList<T>> ListAllAsync()
+        public async virtual Task<IReadOnlyList<T>> ListAllAsync()
         {
             return await Entities.ToListAsync();
         }
