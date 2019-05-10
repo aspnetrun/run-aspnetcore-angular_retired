@@ -59,49 +59,50 @@ namespace AspnetRunAngular.Application.Services
 
         public async Task<ProductModel> CreateProduct(ProductModel product)
         {
-            await ValidateProductIfExist(product);
+            var existingProduct = await _productRepository.GetByIdAsync(product.Id);
+            if (existingProduct != null)
+            {
+                throw new ApplicationException("Product with this id already exists");
+            }
 
-            var mappedEntity = ObjectMapper.Mapper.Map<Product>(product);
-            var newEntity = await _productRepository.SaveAsync(mappedEntity);
+            var newProduct = ObjectMapper.Mapper.Map<Product>(product);
+            newProduct = await _productRepository.SaveAsync(newProduct);
 
-            _logger.LogInformation($"Entity successfully added - AspnetRunAppService");
+            _logger.LogInformation("Entity successfully added - AspnetRunAppService");
 
-            var newMappedEntity = ObjectMapper.Mapper.Map<ProductModel>(newEntity);
-            return newMappedEntity;
+            var newProductModel = ObjectMapper.Mapper.Map<ProductModel>(newProduct);
+            return newProductModel;
         }
 
         public async Task UpdateProduct(ProductModel product)
         {
-            await ValidateProductIfNotExist(product.Id);
+            var existingProduct = await _productRepository.GetByIdAsync(product.Id);
+            if (existingProduct == null)
+            {
+                throw new ApplicationException("Product with this id is not exists");
+            }
 
-            var mappedEntity = ObjectMapper.Mapper.Map<Product>(product);
-            await _productRepository.SaveAsync(mappedEntity);
+            existingProduct.Name = product.Name;
+            existingProduct.Description = product.Description;
+            existingProduct.UnitPrice = product.UnitPrice;
+            existingProduct.CategoryId = product.CategoryId;
 
-            _logger.LogInformation($"Entity successfully updated - AspnetRunAppService");
+            await _productRepository.SaveAsync(existingProduct);
+
+            _logger.LogInformation("Entity successfully updated - AspnetRunAppService");
         }
 
         public async Task DeleteProductById(int productId)
         {
-            await ValidateProductIfNotExist(productId);
-
             var existingProduct = await _productRepository.GetByIdAsync(productId);
+            if (existingProduct == null)
+            {
+                throw new ApplicationException("Product with this id is not exists");
+            }
+
             await _productRepository.DeleteAsync(existingProduct);
 
-            _logger.LogInformation($"Entity successfully deleted - AspnetRunAppService");
-        }
-
-        private async Task ValidateProductIfExist(ProductModel product)
-        {
-            var existingEntity = await _productRepository.GetByIdAsync(product.Id);
-            if (existingEntity != null)
-                throw new ApplicationException($"{product.ToString()} with this id already exists");
-        }
-
-        private async Task ValidateProductIfNotExist(int productId)
-        {
-            var existingEntity = await _productRepository.GetByIdAsync(productId);
-            if (existingEntity == null)
-                throw new ApplicationException($"Product with this id is not exists");
+            _logger.LogInformation("Entity successfully deleted - AspnetRunAppService");
         }
     }
 }
