@@ -89,8 +89,8 @@ export class ProductEditComponent implements OnInit {
 
   saveProduct(product: IProduct) {
     if (product.id > 0) {
-      this.productDataService.updateProduct(product).subscribe((savedProduct: IProduct) => {
-        this.router.navigate(['/product/product-detail/' + savedProduct.id]);
+      this.productDataService.updateProduct(product).subscribe(() => {
+        this.router.navigate(['/product/product-detail/' + product.id]);
       });
     }
     else {
