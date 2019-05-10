@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace AspnetRunAngular.Core.Repositories.Base
+namespace AspnetRunAngular.Core.Interfaces
 {
     public interface ISpecification<T>
     {

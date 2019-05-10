@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AspnetRunAngular.Core.Entities.Base;
+using AspnetRunAngular.Core.Interfaces;
 using AspnetRunAngular.Core.Repositories.Base;
 using AspnetRunAngular.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;

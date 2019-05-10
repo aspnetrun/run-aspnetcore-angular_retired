@@ -1,4 +1,5 @@
 ﻿using AspnetRunAngular.Core.Entities.Base;
+using AspnetRunAngular.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

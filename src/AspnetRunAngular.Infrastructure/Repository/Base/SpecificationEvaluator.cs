@@ -1,5 +1,5 @@
 ﻿using AspnetRunAngular.Core.Entities.Base;
-using AspnetRunAngular.Core.Repositories.Base;
+using AspnetRunAngular.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
