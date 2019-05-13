@@ -1,6 +1,5 @@
 ﻿using System;
 using AspnetRunAngular.Api.Application.Middlewares;
-using AspnetRunAngular.Api.Infrastructure.AutofacModules;
 using AspnetRunAngular.Core.Configuration;
 using AspnetRunAngular.Infrastructure.Data;
 using Autofac;
@@ -184,15 +183,10 @@ namespace AspnetRunAngular.Api
             services.AddHttpContextAccessor();
 
             //configure autofac
-            var container = new ContainerBuilder();
-            container.Populate(services);
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.Populate(services);
 
-            container.RegisterModule(new MediatorModule());
-            container.RegisterModule(new ApplicationModule());
-
-            var scope = container.Build();
-
-            return new AutofacServiceProvider(scope);
+            return new AutofacServiceProvider(containerBuilder.Build());
         }
     }
 }
