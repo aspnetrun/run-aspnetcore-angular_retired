@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace AspnetRunAngular.Infrastructure.Repository.Base
 {
-    public class SpecificationEvaluator<T> where T : class, IEntityBase<int>
+    public class SpecificationEvaluator<T, TId> where T : class, IEntityBase<TId>
     {
         public static IQueryable<T> GetQuery(IQueryable<T> inputQuery, ISpecification<T> specification)
         {
