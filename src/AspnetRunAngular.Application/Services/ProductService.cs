@@ -7,6 +7,7 @@ using AspnetRunAngular.Application.Models;
 using AspnetRunAngular.Core.Entities;
 using AspnetRunAngular.Core.Interfaces;
 using AspnetRunAngular.Core.Repositories;
+using AspnetRunAngular.Core.Specifications;
 
 namespace AspnetRunAngular.Application.Services
 {
@@ -41,7 +42,8 @@ namespace AspnetRunAngular.Application.Services
 
         public async Task<IEnumerable<ProductModel>> GetProductsByName(string name)
         {
-            var productList = await _productRepository.GetProductsByNameAsync(name);
+            var spec = new ProductWithCategorySpecification(name);
+            var productList = await _productRepository.GetAsync(spec);
 
             var productModels = ObjectMapper.Mapper.Map<IEnumerable<ProductModel>>(productList);
 
@@ -50,7 +52,8 @@ namespace AspnetRunAngular.Application.Services
 
         public async Task<IEnumerable<ProductModel>> GetProductsByCategoryId(int categoryId)
         {
-            var productList = await _productRepository.GetProductsByCategoryIdAsync(categoryId);
+            var spec = new ProductWithCategorySpecification(categoryId);
+            var productList = await _productRepository.GetAsync(spec);
 
             var productModels = ObjectMapper.Mapper.Map<IEnumerable<ProductModel>>(productList);
 
