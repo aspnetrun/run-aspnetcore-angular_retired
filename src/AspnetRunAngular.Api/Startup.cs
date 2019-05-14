@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using AspnetRunAngular.Api.Application.Middlewares;
 using AspnetRunAngular.Core.Configuration;
 using AspnetRunAngular.Infrastructure.Data;
+using AspnetRunAngular.Infrastructure.IoC;
+using AspnetRunAngular.Infrastructure.Misc;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
@@ -19,13 +22,16 @@ namespace AspnetRunAngular.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        public Startup(IConfiguration configuration, IHostingEnvironment hostingEnvironment)
         {
             Configuration = configuration;
+            HostingEnvironment = hostingEnvironment;
             AspnetRunSettings = configuration.Get<AspnetRunSettings>();
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment HostingEnvironment { get; }
         public AspnetRunSettings AspnetRunSettings { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -37,7 +43,7 @@ namespace AspnetRunAngular.Api
                 .AddCustomDbContext(AspnetRunSettings)
                 .AddCustomSwagger()
                 .AddCustomConfiguration(Configuration)
-                .AddCustomIntegrations();
+                .AddCustomIntegrations(HostingEnvironment);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -178,13 +184,34 @@ namespace AspnetRunAngular.Api
             return services;
         }
 
-        public static IServiceProvider AddCustomIntegrations(this IServiceCollection services)
+        public static IServiceProvider AddCustomIntegrations(this IServiceCollection services, IHostingEnvironment hostingEnvironment)
         {
             services.AddHttpContextAccessor();
 
+            var fileProvider = new AppFileProvider(hostingEnvironment);
+            var typeFinder = new WebAppTypeFinder(fileProvider);
+
             //configure autofac
             var containerBuilder = new ContainerBuilder();
+
+            //register type finder
+            containerBuilder.RegisterInstance(fileProvider).As<IAppFileProvider>().SingleInstance();
+            containerBuilder.RegisterInstance(typeFinder).As<ITypeFinder>().SingleInstance();
+
+            //populate Autofac container builder with the set of registered service descriptors
             containerBuilder.Populate(services);
+
+            //find dependency registrars provided by other assemblies
+            var dependencyRegistrars = typeFinder.FindClassesOfType<IDependencyRegistrar>();
+
+            //create and sort instances of dependency registrars
+            var instances = dependencyRegistrars
+                .Select(dependencyRegistrar => (IDependencyRegistrar)Activator.CreateInstance(dependencyRegistrar))
+                .OrderBy(dependencyRegistrar => dependencyRegistrar.Order);
+
+            //register all provided dependencies
+            foreach (var dependencyRegistrar in instances)
+                dependencyRegistrar.Register(containerBuilder, typeFinder);
 
             return new AutofacServiceProvider(containerBuilder.Build());
         }
