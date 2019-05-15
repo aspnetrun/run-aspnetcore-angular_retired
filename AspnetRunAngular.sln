@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8F39B7F4-AE6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E76B2CE6-BBF8-483A-BCA9-423BFEE9EC2D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRunAngular.Infrastructure", "src\AspnetRunAngular.Infrastructure\AspnetRunAngular.Infrastructure.csproj", "{894CC471-1C9B-4C40-A198-99D32ECFB76C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRun.Infrastructure", "src\AspnetRun.Infrastructure\AspnetRun.Infrastructure.csproj", "{894CC471-1C9B-4C40-A198-99D32ECFB76C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRunAngular.Application", "src\AspnetRunAngular.Application\AspnetRunAngular.Application.csproj", "{286E6E43-0A61-45A0-B6AB-DB48A5BA14FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRun.Application", "src\AspnetRun.Application\AspnetRun.Application.csproj", "{286E6E43-0A61-45A0-B6AB-DB48A5BA14FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRunAngular.Api", "src\AspnetRunAngular.Api\AspnetRunAngular.Api.csproj", "{7773D404-5A6E-4C8E-B708-8733E2661886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRun.Api", "src\AspnetRun.Api\AspnetRun.Api.csproj", "{7773D404-5A6E-4C8E-B708-8733E2661886}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRunAngular.Tests", "test\AspnetRunAngular.Tests\AspnetRunAngular.Tests.csproj", "{3A4F5D9D-AD9D-4510-88F5-CAFC065FF3D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRun.Tests", "test\AspnetRun.Tests\AspnetRun.Tests.csproj", "{3A4F5D9D-AD9D-4510-88F5-CAFC065FF3D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRunAngular.Core", "src\AspnetRunAngular.Core\AspnetRunAngular.Core.csproj", "{7596B9CC-E03C-479F-A2C1-FA7219EEE4A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRun.Core", "src\AspnetRun.Core\AspnetRun.Core.csproj", "{7596B9CC-E03C-479F-A2C1-FA7219EEE4A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
