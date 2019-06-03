@@ -319,7 +319,7 @@ Test projects using **xunit and Mock libraries**.  xunit, because that's what AS
 
 ## Disclaimer
 
-* This repository is not intended to be a definitive solution.
+* This repository is not intended to be a definitive solution.An aspnet application template for angular framework.
 * This repository not implemented a lot of 3rd party packages, we are try to avoid the over engineering when building on best practices.
 * Beware to use in production way.
 
