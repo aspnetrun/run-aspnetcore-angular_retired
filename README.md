@@ -43,7 +43,7 @@ If you liked the project or if AspnetRun helped you, please **give a star**. And
 Use these instructions to get the project up and running.
 
 ### Prerequisites
-You will need the following tools:
+You will need the following tools :
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.Net Core 2.2 or later](https://dotnet.microsoft.com/download/dotnet-core/2.2)
