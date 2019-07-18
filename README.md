@@ -343,7 +343,7 @@ This project is deployed on Azure. See the project running on Azure in [here](as
 
 ## Pull-Request
 
-Please fork this repository, and send me your findings with pull-requests. This is open-source repository so open to contributions.
+Please fork this repository, and send us to your findings with pull-requests. This is open-source repository so open to contributions.
 
 ## Authors
 
