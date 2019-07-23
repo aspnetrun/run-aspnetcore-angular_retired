@@ -305,7 +305,7 @@ Test projects using **xunit and Mock libraries**.  xunit, because that's what AS
 * ASP.NET Core 2.2
 * Entity Framework Core 2.2 
 * .NET Core Native DI
-* Razor Pages
+* Angular 7
 * AutoMapper
 
 ## Architecture
