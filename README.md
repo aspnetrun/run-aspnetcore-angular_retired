@@ -34,7 +34,7 @@ It includes;
 * CQRS pattern
 * Event Sourcing
 * Implementation of MediatR, Autofac, FluentValidator, AutoMapper
-* swagger
+* Swagger
 
 ## Give a Star! :star:
 If you liked the project or if AspnetRun helped you, please **give a star**. And also please **fork** this repository and send us **pull-requests**. If you find any problem please open **issue**.
