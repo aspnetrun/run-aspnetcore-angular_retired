@@ -9,9 +9,6 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     BrowserAnimationsModule,
@@ -19,6 +16,9 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,           // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule,          // Shared (multi-instance) objects
   ],
+  declarations: [
+    AppComponent,
+  ],  
   providers: [],
   bootstrap: [AppComponent]
 })
