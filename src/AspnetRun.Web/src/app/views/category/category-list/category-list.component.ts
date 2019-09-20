@@ -17,8 +17,9 @@ export class CategoryListComponent {
   }
 
   getCategories() {
-    this.dataService.getCategories().subscribe((categories: ICategory[]) => {
-      this.categories = categories;
-    });
+    this.dataService.getCategories()
+      .subscribe((categories: ICategory[]) => {
+        this.categories = categories;
+      });
   }
 }
