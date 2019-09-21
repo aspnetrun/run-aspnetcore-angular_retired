@@ -22,11 +22,10 @@ export class ProductEditComponent implements OnInit {
     private categoryDataService: CategoryDataService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute) {    
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-
     this.route.params.subscribe(val => {
       this.initializeForm();
 
