@@ -3,6 +3,7 @@ import { NgxUiLoaderConfig, NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Injectable()
 export class SpinnerService {
+    
     config: NgxUiLoaderConfig;
 
     constructor(private ngxUiLoaderService: NgxUiLoaderService) {

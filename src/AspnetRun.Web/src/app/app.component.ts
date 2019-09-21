@@ -8,6 +8,7 @@ import { SpinnerService } from './core/services/spinner.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  
   constructor(private router: Router, public spinnerService: SpinnerService) { }
 
   ngOnInit() {
