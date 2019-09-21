@@ -17,27 +17,27 @@ export class ProductDetailComponent implements OnInit {
     category: { id: null }
   };
 
-  constructor(private dataService: ProductDataService, private router: Router, private route: ActivatedRoute) {
-    route.params.subscribe(val => {
+  constructor(private dataService: ProductDataService, private router: Router, private route: ActivatedRoute) {    
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe(val => {
       const id = +this.route.snapshot.paramMap.get('id');
 
       if (id !== undefined && id != null && id !== 0) {
         this.dataService.getProductById(id).subscribe((product: IProduct) => {
-          if (product != null) {
-            this.product = product;
-          }
-          else {
-            this.router.navigate(['/']);
-          }
+            if (product != null) {
+              this.product = product;
+            }
+            else {
+              this.router.navigate(['/']);
+            }
         });
       }
       else {
         this.router.navigate(['/']);
       }
     });
-  }
-
-  ngOnInit() {
   }
 
   close() {

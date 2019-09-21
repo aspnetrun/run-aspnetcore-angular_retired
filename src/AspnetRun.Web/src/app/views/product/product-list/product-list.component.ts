@@ -19,8 +19,9 @@ export class ProductListComponent {
   }
 
   getProducts() {
-    this.dataService.getProductsByName(this.productName).subscribe((products: IProduct[]) => {
-      this.products = products;
-    });
+    this.dataService.getProductsByName(this.productName)
+      .subscribe((products: IProduct[]) => {
+        this.products = products;
+      });
   }
 }
