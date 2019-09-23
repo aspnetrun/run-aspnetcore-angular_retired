@@ -128,7 +128,7 @@ Repository include layers divided by **4 project**;
     * Interfaces    
     * Services
     * Dtos
-    * Mapper
+    * AutoMapper
     * Exceptions
 * Infrastructure
     * Data
