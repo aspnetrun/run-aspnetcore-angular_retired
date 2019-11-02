@@ -22,7 +22,7 @@
     "@ng-select/ng-select": "^2.19.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "ngx-bootstrap": "^4.1.1",
     "ngx-ui-loader": "^7.2.2",
     "rxjs": "~6.5.2",
